@@ -17,4 +17,13 @@ export class MoviesService {
   readMovie(id: number): Movie {
     return this.movies.find((movie) => movie.id == id);
   }
+
+  updateMovie(newMovie: Movie): Movie {
+    const index = this.movies.findIndex((movie) => movie.id == newMovie.id);
+
+    if (index > -1) {
+      this.movies[index] = newMovie;
+      return this.movies[index];
+    }
+  }
 }

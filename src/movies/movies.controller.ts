@@ -1,5 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
-import { number } from "yargs";
+import { Body, Controller, Get, Param, Post, Put } from "@nestjs/common";
 import { Movie } from "./movie";
 import { MoviesService } from "./movies.service";
 
@@ -20,5 +19,10 @@ export class MoviesController {
   @Get(":id")
   readMovie(@Param("id") id: number): Movie {
     return this.movieService.readMovie(id);
+  }
+
+  @Put()
+  updateMovie(@Body() newMovie: Movie): Movie {
+    return this.movieService.updateMovie(newMovie);
   }
 }
