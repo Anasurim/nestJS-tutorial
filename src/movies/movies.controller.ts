@@ -1,4 +1,5 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { number } from "yargs";
 import { Movie } from "./movie";
 import { MoviesService } from "./movies.service";
 
@@ -9,5 +10,15 @@ export class MoviesController {
   @Post()
   createMovie(@Body() movie: Movie): number {
     return this.movieService.createMovie(movie);
+  }
+
+  @Get()
+  readMovies(): Movie[] {
+    return this.movieService.readMovies();
+  }
+
+  @Get(":id")
+  readMovie(@Param("id") id: number): Movie {
+    return this.movieService.readMovie(id);
   }
 }

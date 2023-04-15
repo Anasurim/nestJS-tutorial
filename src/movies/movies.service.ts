@@ -9,4 +9,12 @@ export class MoviesService {
     this.movies.push(movie);
     return movie.id;
   }
+
+  readMovies(): Movie[] {
+    return this.movies;
+  }
+
+  readMovie(id: number): Movie {
+    return this.movies.find((movie) => movie.id == id);
+  }
 }
