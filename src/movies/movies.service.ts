@@ -26,4 +26,8 @@ export class MoviesService {
       return this.movies[index];
     }
   }
+
+  deleteMovie(id: number) {
+    this.movies = this.movies.filter((movie) => movie.id != id);
+  }
 }
